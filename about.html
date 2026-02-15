@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About – Umair Mahomed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-glass: rgba(30, 30, 30, 0.8);
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent: #4a9eff;
+            --accent-gradient: linear-gradient(135deg, #4a9eff, #6c63ff);
+            --card-bg: #1e1e1e;
+            --border-light: #333333;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1300px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(14px);
+            border-radius: 70px;
+            padding: 0.9rem 2rem;
+            box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #4a9eff;
+            margin: 3px 0;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 6px;
+            transition: width 0.25s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #4a9eff;
+        }
+
+        /* Tablet and mobile hamburger - up to 1000px */
+        @media (max-width: 1000px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: #1e1e1e;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2.5rem;
+                transition: right 0.35s ease;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+                border-radius: 40px 0 0 40px;
+                padding: 2rem;
+                border-left: 1px solid #333;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Tablet specific fixes - LARGER CONTENT, LESS SPACE */
+        @media (min-width: 768px) and (max-width: 1000px) {
+            section {
+                padding: 100px 0 40px !important;
+            }
+
+            .container {
+                padding: 0 30px !important;
+            }
+
+            h1,
+            .section-title {
+                font-size: 3.8rem !important;
+                margin-bottom: 1.2rem !important;
+                margin-top: 5px !important;
+            }
+
+            .about-grid {
+                gap: 40px !important;
+                margin-top: 0 !important;
+            }
+
+            .about-text p {
+                font-size: 1.3rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .skill-box {
+                padding: 2.5rem !important;
+            }
+
+            .skill-box h3 {
+                font-size: 2.2rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .skill-tag {
+                padding: 14px 35px !important;
+                font-size: 1.1rem !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                width: 250px;
+                gap: 2rem;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 35px;
+        }
+
+        .about-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 70px;
+        }
+
+        .page-animate {
+            animation: pageEnter 0.7s ease-out;
+        }
+
+        @keyframes pageEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1,
+        .section-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .section-title span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 30px;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.8rem;
+            color: var(--text-secondary);
+        }
+
+        .skill-box {
+            background: #1e1e1e;
+            border-radius: 40px;
+            padding: 2.5rem;
+            border: 1px solid #333;
+        }
+
+        .skill-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1.8rem;
+            color: #fff;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: #2a2a2a;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #4a9eff;
+            border: 1px solid #333;
+            transition: 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: #4a9eff;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #888;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .skill-tag {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">UM</div>
+        <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="work.html">Work</a>
+            <a href="experience.html">Experience</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="about-section">
+        <div class="container page-animate">
+            <h1 class="section-title">About me</h1>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I'm <strong>Umair Mahomed</strong>, a Full Stack Web Developer focused on building responsive,
+                        fast-loading websites using <strong>HTML, CSS, JavaScript</strong> and simple backend tools like
+                        PHP, Node.js, and MySQL.</p>
+                    <p>For the past 1+ years I've helped startups, small businesses, and agencies create web experiences
+                        that work flawlessly on every device. I believe in clean,
+                        maintainable code and subtle animations that enhance usability.</p>
+                    <p>Based in Brits in South Africa, I collaborate with clients to turn ideas into live websites.</p>
+                </div>
+                <div class="skill-box">
+                    <h3>Core technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 Umair Mahomed</p>
+    </footer>
+
+    <script>
+        (function () {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('open');
+                    const spans = hamburger.querySelectorAll('span');
+                    if (navLinks.classList.contains('open')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('open');
+                        const spans = hamburger.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

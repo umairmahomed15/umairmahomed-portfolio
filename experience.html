@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience – Umair Mahomed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-glass: rgba(30, 30, 30, 0.8);
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent: #4a9eff;
+            --accent-gradient: linear-gradient(135deg, #4a9eff, #6c63ff);
+            --card-bg: #1e1e1e;
+            --border-light: #333333;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1300px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(14px);
+            border-radius: 70px;
+            padding: 0.9rem 2rem;
+            box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #4a9eff;
+            margin: 3px 0;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 6px;
+            transition: width 0.25s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #4a9eff;
+        }
+
+        /* Tablet and mobile hamburger - up to 1000px */
+        @media (max-width: 1000px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: #1e1e1e;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2.5rem;
+                transition: right 0.35s ease;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+                border-radius: 40px 0 0 40px;
+                padding: 2rem;
+                border-left: 1px solid #333;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Tablet specific fixes - LARGER CONTENT, LESS SPACE */
+        @media (min-width: 768px) and (max-width: 1000px) {
+            section {
+                padding: 100px 0 40px !important;
+            }
+
+            .container {
+                padding: 0 30px !important;
+            }
+
+            h1,
+            .section-title {
+                font-size: 3.8rem !important;
+                margin-bottom: 1.2rem !important;
+                margin-top: 5px !important;
+            }
+
+            .intro-text {
+                font-size: 1.4rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .skills-container {
+                padding: 2.5rem !important;
+            }
+
+            .skill-grid {
+                gap: 18px !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+
+            .skill-item {
+                padding: 1.2rem 0.8rem !important;
+                font-size: 1.2rem !important;
+            }
+
+            .skill-item i {
+                font-size: 1.8rem !important;
+            }
+
+            .exp-note {
+                font-size: 1.3rem !important;
+                padding: 1.2rem 2rem !important;
+                margin-top: 35px !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                width: 250px;
+                gap: 2rem;
+            }
+
+            .skill-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 35px;
+            width: 100%;
+        }
+
+        .exp-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 70px;
+        }
+
+        .page-animate {
+            animation: pageEnter 0.7s ease-out;
+        }
+
+        @keyframes pageEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1,
+        .section-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .section-title span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .skills-container {
+            background: #1e1e1e;
+            border-radius: 40px;
+            padding: 2.5rem;
+            border: 1px solid #333;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: #2a2a2a;
+            border-radius: 40px;
+            padding: 1rem 0.8rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4a9eff;
+            border: 1px solid #333;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .skill-item i {
+            font-size: 1.5rem;
+            color: #4a9eff;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            background: #4a9eff;
+            color: #fff;
+        }
+
+        .skill-item:hover i {
+            color: #fff;
+        }
+
+        .exp-note {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #4a9eff;
+            background: #1e1e1e;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid #333;
+            text-align: center;
+            width: auto;
+            max-width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #888;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">UM</div>
+        <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="work.html">Work</a>
+            <a href="experience.html" class="active">Experience</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="exp-section">
+        <div class="container page-animate">
+            <h1 class="section-title">My Toolkit</h1>
+
+            <p class="intro-text">
+                Essential languages I use daily to build websites
+            </p>
+
+            <div class="skills-container">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <span
+                        style="background: #2a2a2a; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; color: #4a9eff; border: 1px solid #333; font-size: 0.95rem;">
+                        <i class="fas fa-code"></i> Core technologies
+                    </span>
+                </div>
+
+                <div class="skill-grid">
+                    <div class="skill-item"><i class="fab fa-html5"></i> HTML5</div>
+                    <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                    <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="skill-item"><i class="fab fa-php"></i> PHP</div>
+                    <div class="skill-item"><i class="fab fa-node"></i> Node.js</div>
+                    <div class="skill-item"><i class="fas fa-database"></i> MySQL</div>
+                    <div class="skill-item"><i class="fas fa-database"></i> MongoDB</div>
+                    <div class="skill-item"><i class="fab fa-git-alt"></i> Git</div>
+                    <div class="skill-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+                    <div class="skill-item"><i class="fas fa-mobile-alt"></i> Responsive</div>
+                    <div class="skill-item"><i class="fas fa-server"></i> REST APIs</div>
+                    <div class="skill-item"><i class="fab fa-github"></i> GitHub</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <div class="exp-note">
+                    <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                    1+ years building websites
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 Umair Mahomed – Full Stack Web Developer</p>
+    </footer>
+
+    <script>
+        (function () {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('open');
+                    const spans = hamburger.querySelectorAll('span');
+                    if (navLinks.classList.contains('open')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('open');
+                        const spans = hamburger.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
